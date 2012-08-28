@@ -15,7 +15,8 @@
                     string: 'foo',
                     number: 123,
                     boolean: true,
-                    range: new control.Range(75, 0, 150, 0.5)
+                    range: new control.Range(75, 0, 150, 0.5),
+                    select: new control.Select('bar', [ 'foo', 'bar', 'baz', 'quux' ])
                 })
                 .on('update', onUpdate);
 

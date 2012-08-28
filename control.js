@@ -13,6 +13,11 @@ var control = global.control = {
         this.min = min;
         this.max = max;
         this.step = step;
+    },
+
+    Select: function(value, options) {
+        this.value = value;
+        this.options = options;
     }
 };
 
@@ -41,6 +46,11 @@ control.Panel.prototype.add = function(name, value) {
     if (value instanceof control.Range) {
         this.data[name] = value.value;
         addRange(name, value.value, update, value.min, value.max, value.range);
+    }
+
+    if (value instanceof control.Select) {
+        this.data[name] = value.value;
+        addSelect(name, value.value, value.options, update);
     }
 
     return this;
@@ -111,21 +121,27 @@ function addRange(name, value, handler, min, max, step) {
     }
 }
 
-function addInput(name, value, handler, type, addOutput) {
-    var controls = document.getElementById('controls');
+function addSelect(name, value, options, handler) {
+    var control = addControl(name);
 
-    if (!controls) {
-        controls = document.createElement('ul');
-        controls.id = 'controls';
-        document.body.appendChild(controls);
+    var select = document.createElement('select');
+    control.appendChild(select);
+
+    for (var i = 0; i < options.length; i++) {
+        var option = new Option();
+        select.add(option);
+        option.value = option.label = options[i];
     }
 
-    var control = document.createElement('li');
-    controls.appendChild(control);
+    select.value = value;
 
-    var label = document.createElement('label');
-    control.appendChild(label);
-    label.appendChild(document.createTextNode(name));
+    select.onchange = function(e) {
+        handler(e);
+    };
+}
+
+function addInput(name, value, handler, type, addOutput) {
+    var control = addControl(name);
 
     var input = document.createElement('input');
     control.appendChild(input);
@@ -156,6 +172,31 @@ function addInput(name, value, handler, type, addOutput) {
     }
 
     return input;
+}
+
+function addControl(name) {
+    var panel = getPanel();
+
+    var control = document.createElement('li');
+    panel.appendChild(control);
+
+    var label = document.createElement('label');
+    control.appendChild(label);
+    label.appendChild(document.createTextNode(name));
+
+    return control;
+}
+
+function getPanel() {
+    var controls = document.getElementById('controls');
+
+    if (!controls) {
+        controls = document.createElement('ul');
+        controls.id = 'controls';
+        document.body.appendChild(controls);
+    }
+
+    return controls;
 }
 
 })(window);

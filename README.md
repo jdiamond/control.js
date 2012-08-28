@@ -106,7 +106,6 @@ Ideas
 - Multiple tabs on one panel?
     - Maybe nested objects become tabs.
 - More control types:
-    - Select - new control.Select(value, array)
     - Radio buttons - new control.Radio(value, array)
     - Color
     - Date
