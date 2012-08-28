@@ -1,0 +1,37 @@
+#controls {
+	margin: 50px auto;
+	border-radius: 5px;
+	background: rgba(0, 0, 0, 0.2);
+	padding: 10px 40px;
+	width: 430px;
+	box-shadow: inset 0px 1px 2px 0px rgba(0, 0, 0, 0.4);
+	list-style: none;
+}
+
+#controls li {
+	margin: 20px 0;
+}
+
+#controls input {
+	width: 255px;
+}
+
+#controls label, #controls output {
+	margin-left: 20px;
+	border-radius: 5px;
+	background: rgba(255, 255, 255, 0.5);
+	padding: 6px 12px;
+	width: 80px;
+	height: 30px;
+	font-size: 12px;
+	font-family: Arial, sans-serif;
+	text-align: center;	
+}
+
+#controls label {
+	display: inline-block;
+	margin-left: 0;
+	margin-right: 20px;
+	width: 50px;
+	height: 16px;
+}
