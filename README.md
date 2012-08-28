@@ -90,6 +90,13 @@ Constructs a range control. Use this to add a slider to the panel instead of a
 number control. Range controls also add `output` elements to the panel so that
 you can quickly see the current value.
 
+new control.Select(value, options)
+----------------------------------------------
+
+Constructs a select control. Use this to add a drop-down list to the panel.
+The options should be a simple array of strings. Both the label and value for
+each option is set to the values in the array.
+
 Limitations
 ===========
 
