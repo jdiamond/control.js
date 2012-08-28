@@ -9,7 +9,8 @@ time the user uses the control panel to change a property. MIT licensed.
             someString: 'foo',
             someNumber: 42,
             someBoolean: true,
-            anotherNumber: new control.Range(33, 1, 100, 0.5) // value, min, max, step
+            anotherNumber: new control.Range(33, 1, 100, 0.5), // value, min, max, step
+            anotherString: new control.Select('bar', [ 'foo', 'bar', 'baz' ]) // value, options
         })
         .on('update', function(data, name, value) {
             // Use `data.someString`, `data.someNumber`, etc.
@@ -31,6 +32,9 @@ I find myself getting too distracted creating the controls. I need to add the
 `label` and `input` elements to the HTML, some JavaScript to wire it up, and
 sometimes even some CSS if I don't like how it looks. This library is supposed
 to help reduce those distractions.
+
+How?
+====
 
 With control.js, all I need to do is include the library and then add a tiny
 bit of JavaScript describing what values should be exposed in the control
@@ -54,10 +58,11 @@ immediate feedback and helps me find the best value as quickly as possible.
             draw(data.lineWidth);
         });
 
-The control panel is a `ul` element with an id of "controls" containing one
-`li` for each control. Each `li` contains a `label`, `input`, and (sometimes)
-`output` elements. It's pretty ugly without any styling. You can style it
-yourself or include control.css to get some basic styling.
+The control panel that gets added to the page is a `ul` element with an id of
+"controls" containing one `li` for each control. Each `li` contains a `label`,
+`input` or `select`, and (sometimes) `output` elements. It's pretty ugly
+without any styling. You can style it yourself or include control.css to get
+some basic styling.
 
 API
 ===
